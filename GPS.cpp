@@ -5,6 +5,7 @@ GPS_DD::GPS_DD()
 {
   this->latitude = 0.0;
   this->longitude = 0.0;
+  
 }
 
 GPS_DD::GPS_DD(double arg_latitude, double arg_longitude)
