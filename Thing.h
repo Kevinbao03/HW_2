@@ -23,6 +23,7 @@ class Thing
   GPS_DD      location;
   
   Thing(void);
+  Thing(GPS_DD location);
   Thing(Person arg_owner);
   Json::Value dump2JSON(); // print the content of the object
   void give(Person arg_owner);

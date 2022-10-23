@@ -19,12 +19,22 @@ myPrintLog
   return;
 }
 
+
+
 Thing::Thing
 (void)
 {
   this->model = "";
   this->sequence_num = "";
   this->description = "";
+}
+Thing::Thing
+(GPS_DD location)
+{
+  this->model = "";
+  this->sequence_num = "";
+  this->description = "";
+  this->location = location;
 }
 
 Thing::Thing
