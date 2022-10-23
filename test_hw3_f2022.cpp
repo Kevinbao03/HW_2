@@ -65,5 +65,9 @@ main(int argc, char *argv[])
   // distance_calculated = gps_TLC_UCDavis.distance(current);
   // std::cout << "the distance to Davis is " << distance_calculated << " miles." << std::endl;
   */
-  return 0;
+  int a;
+  if (1 == 1){
+    a = 1;
+  }
+  return 1;
 }
