@@ -2,7 +2,6 @@
 // test_GPS.cpp
 
 #include "Person.h"
-#include "IOT_Thing.h"
 #include "Thing.h"
 #include "Location.h"
 

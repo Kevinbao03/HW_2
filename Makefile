@@ -27,7 +27,7 @@ INC	=	ecs36b_Common.h
 
 
 # rules.
-all: 	test_hw3_f2022
+all: 	main
 
 #
 #
@@ -50,16 +50,14 @@ Person.o:	Person.cpp Person.h $(INC)
 Thing.o:	Thing.cpp Thing.h $(INC)
 	$(CC) -c $(CFLAGS) Thing.cpp
 
-IOT_Thing.o:	IOT_Thing.cpp IOT_Thing.h Network.h $(INC)
-	$(CC) -c $(CFLAGS) IOT_Thing.cpp
 
-test_hw3_f2022.o:	test_hw3_f2022.cpp GPS.h Thing.h IOT_Thing.h Network.h Person.h JvTime.h $(INC)
-	$(CC) -c $(CFLAGS) test_hw3_f2022.cpp
+main.o:	main.cpp GPS.h Thing.h Network.h Person.h JvTime.h $(INC)
+	$(CC) -c $(CFLAGS) main.cpp
 
-test_hw3_f2022:		GPS.o Location.o test_hw3_f2022.o Thing.o Person.o JvTime.o IOT_Thing.o Network.o
-	g++ -std=c++14 test_hw3_f2022.o Location.o GPS.o Thing.o IOT_Thing.o Network.o Person.o JvTime.o -o test_hw3_f2022 $(LDFLAGS)
+main:		GPS.o Location.o main.o Thing.o Person.o JvTime.o Network.o
+	g++ -std=c++14 main.o Location.o GPS.o Thing.o Network.o Person.o JvTime.o -o main $(LDFLAGS)
 
 clean:
-	rm -f *.o *~ core test_hw3_f2022
+	rm -f *.o *~ core main
 
 
