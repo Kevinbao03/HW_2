@@ -8,6 +8,7 @@
 #include "Person.h"
 #include "GPS.h"
 #include "JvTime.h"
+#include "Location.h"
 
 class Thing
 {
@@ -18,13 +19,14 @@ class Thing
   std::string model;
   std::string sequence_num;
   std::string description;
-  Person      owner;
+  Person owner;
+  std::string name;
 
-  GPS_DD      location;
+  Location place;
   
-  Thing(void);
-  Thing(GPS_DD location);
-  Thing(Person arg_owner);
+  Thing();
+  Thing(Location place);
+  Thing(Person arg_owner, std::string name);
   Json::Value dump2JSON(); // print the content of the object
   void give(Person arg_owner);
 };

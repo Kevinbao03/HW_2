@@ -4,7 +4,7 @@
 
 
 
-Person::Person(std::string arg_SSN, std::string arg_name, GPS_DD arg_home)
+Person::Person(std::string arg_SSN, std::string arg_name, Location arg_home)
 {
   this->SSN = arg_SSN;
   this->name = arg_name;
@@ -21,25 +21,25 @@ Person::Person()
 {
   this->SSN = "";
   this->name = "";
-  this->home = GPS_DD {};
+  this->home = Location {};
 }
 
 void
 Person::setHome
-(GPS_DD arg_home)
+(Location arg_home)
 {
   this->home = arg_home;
 }
 
 void
 Person::setLocation
-(GPS_DD arg_location, JvTime arg_time)
+(Location arg_location, JvTime arg_time)
 {
   this->location = arg_location;
   this->since_when = arg_time;
 }
 
-GPS_DD
+Location
 Person::getHome
 (void)
 {
@@ -76,10 +76,7 @@ Person::dump2JSON
       result["name"] = this->name;
     }
 
-  if (this->SSN != "")
-    {
-      result["SSN"] = this->SSN;
-    }
+
 
   Json::Value jv_result;
   

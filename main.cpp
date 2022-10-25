@@ -13,48 +13,18 @@ main(int argc, char *argv[])
   Person grandmother{"grandmother"}; 
   Person wolf{"Wolf"};
   Person mother{"mother"};
-  Thing red_hood{grandmother};
+  Thing red_hood{grandmother, "red hood"};
   
-  GPS_DD home { 37.478520 , -122.223151 };
-  GPS_DD grandmotherHome {37.462005, -122.242793};
-  GPS_DD woods{37.467948,-122.239098};
-  JvTime start{};
-  Thing threeTrees{grandmotherHome};
-
-
+  Location home {"little red riding hoods home"};
   red_riding_hood.setHome(home);
-  red_riding_hood.setLocation(home, start);
-  mother.setHome(home);
-  mother.setLocation(home, start);
-  wolf.setHome(woods);
-  wolf.setLocation(woods, start);
-  grandmother.setHome(grandmotherHome);
-  grandmother.setLocation(grandmotherHome, start);
+
+
 
   red_hood.give(red_riding_hood);
 
 
   std::cout << (red_hood.dump2JSON()).toStyledString() << std::endl;
 
-
-  Thing cake{mother};
-  Thing wine{mother};
-
-  cake.give(red_riding_hood);
-  wine.give(red_riding_hood);
-
-  std::cout << (cake.dump2JSON()).toStyledString() << std::endl;
-  std::cout << (wine.dump2JSON()).toStyledString() << std::endl;
-
-  red_riding_hood.setLocation(woods, *getNowJvTime());
-  wolf.setLocation(woods, *getNowJvTime());
-  
-  std::cout << (red_riding_hood.dump2JSON()).toStyledString() << std::endl;
-  std::cout << (wolf.dump2JSON()).toStyledString() << std::endl;
-
-  
-  std::cout << (grandmother.dump2JSON()).toStyledString() << std::endl;
-  std::cout << (grandmother.dump2JSON()).toStyledString() << std::endl;
 
 
   

@@ -29,21 +29,22 @@ Thing::Thing
   this->description = "";
 }
 Thing::Thing
-(GPS_DD location)
+(Location location)
 {
   this->model = "";
   this->sequence_num = "";
   this->description = "";
-  this->location = location;
+  this->place = location;
 }
 
 Thing::Thing
-(Person arg_owner)
+(Person arg_owner, std::string name)
 {
   this->model = "";
   this->sequence_num = "";
   this->description = "";
   this->owner = arg_owner;
+  this->name = name;
 }
 
 void
@@ -72,19 +73,11 @@ Json::Value Thing::dump2JSON
 {
   Json::Value result { };
 
-  if (this->model != "")
-    {
-      result["model"] = this->model;
-    }
 
-  if (this->sequence_num != "")
-    {
-      result["sequence_num"] = this->sequence_num;
-    }
 
-  if (this->description != "")
+  if (this->name != "")
     {
-      result["description"] = this->description;
+      result["name"] = this->name;
     }
 
   Json::Value jv_result;
@@ -93,8 +86,6 @@ Json::Value Thing::dump2JSON
   result["owner"] = jv_result;
 
 
-  jv_result = (this->location).dump2JSON();
-  result["location"] = jv_result;
 
   // std::cout << jv_result.toStyledString() << std::endl;
 

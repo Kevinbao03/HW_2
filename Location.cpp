@@ -1,5 +1,10 @@
 #include "Location.h"
 
+Location:: Location()
+{
+    this->location = "";
+}
+
 Location:: Location(string place)
 {
     this->location = place;

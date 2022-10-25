@@ -7,28 +7,29 @@
 #include "ecs36b_Common.h"
 #include "GPS.h"
 #include "JvTime.h"
+#include "Location.h"
 
 class Person
 {
  private:
   std::string SSN;
   std::string name;
-  GPS_DD home;
-  GPS_DD location;
+  Location home;
+  Location location;
   JvTime since_when;
   
 public:
-  Person(std::string, std::string, GPS_DD);
+  Person(std::string, std::string, Location);
   Person(std::string arg_name);
   Person();
-  void setHome(GPS_DD);
-  void setLocation(GPS_DD, JvTime);
+  void setHome(Location);
+  void setLocation(Location, JvTime);
 
   bool operator==(Person& aPerson);
   std::string getSSN();
   std::string getName();
-  GPS_DD getHome();
-  GPS_DD getLocation();
+  Location getHome();
+  Location getLocation();
   JvTime getLocationTime();
   Json::Value dump2JSON();
 };

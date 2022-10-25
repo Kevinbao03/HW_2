@@ -8,6 +8,7 @@ class Location
     private:
         string location;
     public:
+        Location();
         Location(string place);
         string getLocation();
         Json::Value dump2JSON();
