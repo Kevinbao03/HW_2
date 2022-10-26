@@ -8,6 +8,7 @@
 int
 main(int argc, char *argv[])
 {
+  int i;
   // if (argc != 3) return -1;
   Person red_riding_hood{"little red riding hood"};
   Person grandmother{"grandmother"}; 
