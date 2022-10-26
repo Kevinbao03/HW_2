@@ -6,7 +6,6 @@
 
 #include "ecs36b_Common.h"
 #include "Person.h"
-#include "GPS.h"
 #include "JvTime.h"
 #include "Location.h"
 
@@ -21,6 +20,9 @@ class Thing
   std::string description;
   Person owner;
   std::string name;
+  int numpeople = 0;
+
+  std::string people[2] = {};
 
   Location place;
   
@@ -29,6 +31,7 @@ class Thing
   Thing(Person arg_owner, std::string name);
   Json::Value dump2JSON(); // print the content of the object
   void give(Person arg_owner);
+  void addPeople(Person person);
 };
 
 #endif /* _THING_H_ */

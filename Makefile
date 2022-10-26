@@ -35,8 +35,6 @@ all: 	main
 Location.o: Location.cpp Location.h $(INC)
 	$(CC) -c $(CFLAGS) Location.cpp
 
-GPS.o: GPS.cpp GPS.h $(INC)
-	$(CC) -c $(CFLAGS) GPS.cpp
 
 JvTime.o:	JvTime.cpp JvTime.h $(INC)
 	$(CC) -c $(CFLAGS) JvTime.cpp
@@ -48,11 +46,11 @@ Thing.o:	Thing.cpp Thing.h $(INC)
 	$(CC) -c $(CFLAGS) Thing.cpp
 
 
-main.o:	main.cpp GPS.h Thing.h Person.h JvTime.h $(INC)
+main.o:	main.cpp Thing.h Person.h JvTime.h $(INC)
 	$(CC) -c $(CFLAGS) main.cpp
 
-main:		GPS.o Location.o main.o Thing.o Person.o JvTime.o 
-	g++ -std=c++14 main.o Location.o GPS.o Thing.o Person.o JvTime.o -o main $(LDFLAGS)
+main:		Location.o main.o Thing.o Person.o JvTime.o 
+	g++ -std=c++14 main.o Location.o Thing.o Person.o JvTime.o -o main $(LDFLAGS)
 
 clean:
 	rm -f *.o *~ core main

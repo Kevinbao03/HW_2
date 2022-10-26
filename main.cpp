@@ -14,23 +14,37 @@ main(int argc, char *argv[])
   Person wolf{"Wolf"};
   Person mother{"mother"};
   Thing red_hood{grandmother, "red hood"};
+  Thing cakeandwine{mother, "cake and wine"};
+  Location woods{"Woods"};
+  Location grandmothersHome{"Grandma's House"};
+  Location outsideWoods{"Outside Woods"};
+  Thing threeTrees{grandmothersHome};
+
+
   
   Location home {"little red riding hoods home"};
   red_riding_hood.setHome(home);
-
-
+  red_riding_hood.setLocation(home, *getNowJvTime());
+  wolf.setHome(woods);
+  wolf.setLocation(woods, *getNowJvTime());
 
   red_hood.give(red_riding_hood);
-
-
   std::cout << (red_hood.dump2JSON()).toStyledString() << std::endl;
 
+  cakeandwine.give(red_riding_hood);
+  std::cout << (cakeandwine.dump2JSON()).toStyledString() << std::endl;
 
+  grandmother.setHome(grandmothersHome);
+  grandmother.setLocation(grandmothersHome, *getNowJvTime());
 
   
+  red_riding_hood.setLocation(outsideWoods, *getNowJvTime());
+  wolf.setLocation(outsideWoods, *getNowJvTime());
 
+  outsideWoods.addPeople(wolf.getName());
+  outsideWoods.addPeople(red_riding_hood.getName());
 
-
+  std::cout << (outsideWoods.dump2JSON()).toStyledString() << std::endl;
 
 
 

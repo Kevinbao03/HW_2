@@ -3,15 +3,21 @@
 
 #include "ecs36b_Common.h"
 
+
 class Location
 {
     private:
-        string location;
+       
+        
     public:
+        string location;
+        std::string people[2] = {};
+        int numpeople = 0;
         Location();
         Location(string place);
         string getLocation();
         Json::Value dump2JSON();
+        void addPeople(std::string person);
 };
 
 #endif

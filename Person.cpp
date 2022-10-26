@@ -70,11 +70,8 @@ Person::dump2JSON
 (void)
 {
   Json::Value result { };
-
-  if (this->name != "")
-    {
-      result["name"] = this->name;
-    }
+  
+  
 
 
 
@@ -84,10 +81,15 @@ Person::dump2JSON
   result["home"] = jv_result;
 
   jv_result = (this->location).dump2JSON();
-  result["location"] = jv_result;
+  result["Current Location"] = jv_result;
 
   jv_result = (this->since_when).dump2JSON();
   result["since_when"] = jv_result;
+
+  if (this->name != "")
+    {
+      result[" name"] = this->name;
+    }
 
   // std::cout << jv_result.toStyledString() << std::endl;
 

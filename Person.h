@@ -5,7 +5,6 @@
 // Person.h
 
 #include "ecs36b_Common.h"
-#include "GPS.h"
 #include "JvTime.h"
 #include "Location.h"
 
@@ -22,8 +21,8 @@ public:
   Person(std::string, std::string, Location);
   Person(std::string arg_name);
   Person();
-  void setHome(Location);
-  void setLocation(Location, JvTime);
+  void setHome(Location location);
+  void setLocation(Location location, JvTime time);
 
   bool operator==(Person& aPerson);
   std::string getSSN();

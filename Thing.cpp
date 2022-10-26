@@ -54,6 +54,14 @@ Thing::give
   this->owner = arg_owner;
 }
 
+void
+Thing::addPeople
+  (Person person)
+  {
+    people[numpeople] = person.getName();
+    numpeople = numpeople + 1;
+  }
+
 
 #ifdef OLD
 void Thing::dump
@@ -72,20 +80,16 @@ Json::Value Thing::dump2JSON
 (void)
 {
   Json::Value result { };
-
-
-
-  if (this->name != "")
-    {
-      result["name"] = this->name;
-    }
-
   Json::Value jv_result;
   
   jv_result = (this->owner).dump2JSON();
   result["owner"] = jv_result;
 
 
+  if (this->name != "")
+    {
+      result["object"] = this->name;
+    }
 
   // std::cout << jv_result.toStyledString() << std::endl;
 
