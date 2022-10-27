@@ -27,11 +27,13 @@ class Thing
   Location place;
   
   Thing();
+  Thing(std::string name);
   Thing(Location place);
   Thing(Person arg_owner, std::string name);
   Json::Value dump2JSON(); // print the content of the object
   void give(Person arg_owner);
   void addPeople(Person person);
+  std::string getName();
 };
 
 #endif /* _THING_H_ */

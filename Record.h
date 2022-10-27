@@ -7,20 +7,22 @@
 #include "Person.h"
 #include "Location.h"
 #include "JvTime.h"
+#include "Thing.h"
 
 class Record{
     private:
-        Person people[2];
+        Person person;
         Location location;
-        int numpeople = 0;
+        Thing thing;
         
 
     public:
         Record();
-        void addPeople(Person person);
+        void setPerson(Person person);
         void setLocation(Location location);
+        void addThing(Thing thing);
         
-        Json::Value dump2JSON();
+        Json::Value dump2JSON(std::string arg);
 
 
 };

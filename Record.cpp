@@ -3,10 +3,9 @@
 Record::Record(){}
 
 void
-Record::addPeople
+Record::setPerson
 (Person person){
-    people[numpeople] = person;
-    numpeople ++;
+    this->person = person;
 }
 
 void
@@ -15,11 +14,26 @@ Record::setLocation
     this->location = location;
 }
 
+void
+Record::addThing
+(Thing thing)
+{
+    this->thing = thing;
+}
+
+
 Json::Value 
 Record::dump2JSON
-(void)
+(std::string arg)
 {
-  Json::Value result { };
-    result["location"] = this->location.dump2JSON();
-    result["people"] = "";
+    Json::Value result { };
+    if (arg == "location"){
+        result["record"] = this->location.dump2JSON();
+    }
+    else if (arg == "thing"){
+        result["record"] = this->thing.dump2JSON();
+    }
+
+    return result;
+    
 }

@@ -28,6 +28,16 @@ Thing::Thing
   this->sequence_num = "";
   this->description = "";
 }
+
+Thing::Thing
+(std::string name)
+{
+  this->model = "";
+  this->sequence_num = "";
+  this->description = "";
+  this->name = name;
+}
+
 Thing::Thing
 (Location location)
 {
@@ -53,6 +63,13 @@ Thing::give
 {
   this->owner = arg_owner;
 }
+
+std::string 
+Thing::getName()
+{
+  return this->name;
+}
+
 
 void
 Thing::addPeople

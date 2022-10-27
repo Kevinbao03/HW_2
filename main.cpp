@@ -4,6 +4,7 @@
 #include "Person.h"
 #include "Thing.h"
 #include "Location.h"
+#include "Record.h"
 
 int
 main(int argc, char *argv[])
@@ -18,9 +19,7 @@ main(int argc, char *argv[])
   Location woods{"Woods"};
   Location grandmothersHome{"Grandma's House"};
   Location outsideWoods{"Outside Woods"};
-  Thing threeTrees{grandmothersHome};
-
-
+  Thing threeTrees{"Three Large Oak Trees"};
   
   Location home {"little red riding hoods home"};
   red_riding_hood.setHome(home);
@@ -29,13 +28,22 @@ main(int argc, char *argv[])
   wolf.setLocation(woods, *getNowJvTime());
 
   red_hood.give(red_riding_hood);
-  std::cout << (red_hood.dump2JSON()).toStyledString() << std::endl;
+
+  Record r1{};
+  r1.addThing(red_hood);
+  std::cout << (r1.dump2JSON("thing")).toStyledString() << std::endl;
+
+
 
   cakeandwine.give(red_riding_hood);
-  std::cout << (cakeandwine.dump2JSON()).toStyledString() << std::endl;
 
   grandmother.setHome(grandmothersHome);
   grandmother.setLocation(grandmothersHome, *getNowJvTime());
+
+  Record r2{};
+  r2.addThing(cakeandwine);
+  std::cout << (r2.dump2JSON("thing")).toStyledString() << std::endl;
+
 
   
   red_riding_hood.setLocation(outsideWoods, *getNowJvTime());
@@ -44,7 +52,16 @@ main(int argc, char *argv[])
   outsideWoods.addPeople(wolf.getName());
   outsideWoods.addPeople(red_riding_hood.getName());
 
-  std::cout << (outsideWoods.dump2JSON()).toStyledString() << std::endl;
+  Record r3{};
+  r3.setLocation(outsideWoods);
+  std::cout << (r3.dump2JSON("location")).toStyledString() << std::endl;
+
+  
+  grandmothersHome.setThings(threeTrees.getName());
+  grandmothersHome.addPeople(grandmother.getName());
+  Record r4{};
+  r4.setLocation(grandmothersHome);
+  std::cout << (r4.dump2JSON("location")).toStyledString() << std::endl;
 
 
 
