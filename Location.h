@@ -7,7 +7,7 @@
 class Location
 {
     private:
-       
+ 
         
     public:
         string location;
