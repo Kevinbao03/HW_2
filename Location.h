@@ -12,11 +12,13 @@ class Location
     public:
         string location;
         std::string people[2] = {};
+        string thing;
         int numpeople = 0;
         Location();
         Location(string place);
         string getLocation();
         Json::Value dump2JSON();
+        void setThings(std::string things);
         void addPeople(std::string person);
 };
 
