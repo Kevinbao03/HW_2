@@ -7,6 +7,7 @@
 #include "ecs36b_Common.h"
 #include "JvTime.h"
 #include "Location.h"
+#include "Thing.h"
 
 class Person
 {
@@ -16,6 +17,8 @@ class Person
   Location home;
   Location location;
   JvTime since_when;
+  Thing clothes;
+  Thing Objects;
   
 public:
   Person(std::string, std::string, Location);
@@ -29,6 +32,11 @@ public:
   std::string getName();
   Location getHome();
   Location getLocation();
+  void setClothes(Thing thing);
+  Thing getClothes();
+  void setObjects(Thing thing);
+  void giveClothes(Person person);
+  void giveObjects(Person person);
   JvTime getLocationTime();
   Json::Value dump2JSON();
 };

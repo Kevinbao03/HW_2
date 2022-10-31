@@ -38,32 +38,6 @@ Thing::Thing
   this->name = name;
 }
 
-Thing::Thing
-(Location location)
-{
-  this->model = "";
-  this->sequence_num = "";
-  this->description = "";
-  this->place = location;
-}
-
-Thing::Thing
-(Person arg_owner, std::string name)
-{
-  this->model = "";
-  this->sequence_num = "";
-  this->description = "";
-  this->owner = arg_owner;
-  this->name = name;
-}
-
-void
-Thing::give
- (Person arg_owner)
-{
-  this->owner = arg_owner;
-}
-
 std::string 
 Thing::getName()
 {
@@ -71,13 +45,7 @@ Thing::getName()
 }
 
 
-void
-Thing::addPeople
-  (Person person)
-  {
-    people[numpeople] = person.getName();
-    numpeople = numpeople + 1;
-  }
+
 
 
 #ifdef OLD
@@ -96,11 +64,7 @@ void Thing::dump
 Json::Value Thing::dump2JSON
 (void)
 {
-  Json::Value result { };
-  Json::Value jv_result;
-  
-  jv_result = (this->owner).dump2JSON();
-  result["owner"] = jv_result;
+  Json::Value result { };  
 
 
   if (this->name != "")

@@ -14,8 +14,9 @@ main(int argc, char *argv[])
   Person grandmother{"grandmother"}; 
   Person wolf{"Wolf"};
   Person mother{"mother"};
-  Thing red_hood{grandmother, "red hood"};
-  Thing cakeandwine{mother, "cake and wine"};
+  Thing red_hood{"red hood"};
+  Thing cakeandwine{"cake and wine"};
+
   Location woods{"Woods"};
   Location grandmothersHome{"Grandma's House"};
   Location outsideWoods{"Outside Woods"};
@@ -24,53 +25,46 @@ main(int argc, char *argv[])
   Location home {"little red riding hoods home"};
   red_riding_hood.setHome(home);
   red_riding_hood.setLocation(home, *getNowJvTime());
+  mother.setHome(home);
   wolf.setHome(woods);
   wolf.setLocation(woods, *getNowJvTime());
+  grandmothersHome.setThings(threeTrees.getName());
 
-  red_hood.give(red_riding_hood);
+  grandmother.setClothes(red_hood);
+  grandmother.giveClothes(red_riding_hood);
+
+  red_riding_hood.setClothes(red_hood);
+
 
   Record r1{};
-  r1.addThing(red_hood);
-  std::cout << (r1.dump2JSON("thing")).toStyledString() << std::endl;
+  r1.addPeople(red_riding_hood);
+  r1.setLocation(home);
+  r1.setTime(*getNowJvTime());
+  std::cout << (r1.dump2JSON()).toStyledString() << std::endl;
 
-
-
-  cakeandwine.give(red_riding_hood);
-
-  grandmother.setHome(grandmothersHome);
-  grandmother.setLocation(grandmothersHome, *getNowJvTime());
-
+  red_riding_hood.setObjects(cakeandwine);
   Record r2{};
-  r2.addThing(cakeandwine);
-  std::cout << (r2.dump2JSON("thing")).toStyledString() << std::endl;
-
-
-  
-  red_riding_hood.setLocation(outsideWoods, *getNowJvTime());
-  wolf.setLocation(outsideWoods, *getNowJvTime());
-
-  outsideWoods.addPeople(wolf.getName());
-  outsideWoods.addPeople(red_riding_hood.getName());
+  r2.addPeople(red_riding_hood);
+  r2.addPeople(mother);
+  r2.setLocation(home);
+  r2.setTime(*getNowJvTime());
+  std::cout << (r2.dump2JSON()).toStyledString() << std::endl;
 
   Record r3{};
+  r3.addPeople(red_riding_hood);
+  r3.addPeople(wolf);
   r3.setLocation(outsideWoods);
-  std::cout << (r3.dump2JSON("location")).toStyledString() << std::endl;
+  r3.setTime(*getNowJvTime());
+  std::cout << (r3.dump2JSON()).toStyledString() << std::endl;
 
-  
-  grandmothersHome.setThings(threeTrees.getName());
-  grandmothersHome.addPeople(grandmother.getName());
   Record r4{};
+  r4.addPeople(grandmother);
   r4.setLocation(grandmothersHome);
-  std::cout << (r4.dump2JSON("location")).toStyledString() << std::endl;
+  r4.setTime(*getNowJvTime());
+  std::cout << (r4.dump2JSON()).toStyledString() << std::endl;
 
 
 
-
-
-
-
-  
-  
   /*
   
   GPS_DD gps_Home_Woodland { 38.672215864622636, -121.72280111121437 };

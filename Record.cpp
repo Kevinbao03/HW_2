@@ -3,9 +3,10 @@
 Record::Record(){}
 
 void
-Record::setPerson
+Record::addPeople
 (Person person){
-    this->person = person;
+    this->people[numpeople] = person;
+    numpeople += 1;
 }
 
 void
@@ -21,18 +22,32 @@ Record::addThing
     this->thing = thing;
 }
 
+void
+Record::setTime
+(JvTime time)
+{
+    this->time = time;
+}
+
 
 Json::Value 
 Record::dump2JSON
-(std::string arg)
+()
 {
     Json::Value result { };
-    if (arg == "location"){
-        result["record"] = this->location.dump2JSON();
+    result["Location:"] = this->location.dump2JSON();
+    
+    if (this->people[1].getName() != ""){
+        result["Person 1"] = this->people[1].dump2JSON();
+        result["Person 2"] = this->people[0].dump2JSON();
+
     }
-    else if (arg == "thing"){
-        result["record"] = this->thing.dump2JSON();
+
+    else if(this->people[0].getName() != ""){
+        result["Person"] = this->people[0].dump2JSON();
     }
+
+    result["Time"] = this->time.dump2JSON();
 
     return result;
     

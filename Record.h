@@ -11,18 +11,21 @@
 
 class Record{
     private:
-        Person person;
+        Person people[2] = {};
+        int numpeople = 0;
         Location location;
         Thing thing;
+        JvTime time;
         
 
     public:
         Record();
-        void setPerson(Person person);
+        void setTime(JvTime time);
+        void addPeople(Person person);
         void setLocation(Location location);
         void addThing(Thing thing);
         
-        Json::Value dump2JSON(std::string arg);
+        Json::Value dump2JSON();
 
 
 };
